@@ -1,0 +1,26 @@
+type Mutation {
+  m: Int
+}
+
+type Query {
+  test(input: TestInput!): TestResult!
+}
+
+input TestFilterInput {
+  a: Int
+  b: Int! = 123
+}
+
+input TestInput {
+  filter: TestFilterInput
+}
+
+type TestResult {
+  a: Int
+  b: Int!
+}
+
+extend schema @link(
+  url: "https://specs.apollo.dev/federation/v2.3",
+  import: ["@external", "@requires", "@provides", "@key", "@shareable", "@inaccessible", "@tag", "@override", "@composeDirective", "@extends"]
+)
